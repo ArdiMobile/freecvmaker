@@ -10,7 +10,6 @@ app = Flask(__name__)
 DOWNLOAD_DIR = "downloads"
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
-# Auto delete after 5 minutes
 def delete_later(path):
     time.sleep(300)
     if os.path.exists(path):
@@ -40,7 +39,6 @@ def download():
 
         final_file = f"{DOWNLOAD_DIR}/{file_id}.mp4"
 
-        # Start auto delete thread
         threading.Thread(target=delete_later, args=(final_file,)).start()
 
         return jsonify({
@@ -67,8 +65,9 @@ def get_file(file_id):
 
 @app.route("/")
 def home():
-    return "Galmee Merge API Running"
+    return "Galmee API running on Render 🚀"
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=3000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
