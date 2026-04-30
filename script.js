@@ -3,7 +3,7 @@ const urlInput = document.getElementById('urlInput');
 const preview = document.getElementById('preview');
 
 // 👉 CHANGE THIS to your Railway URL
-const API_URL = "https://newfb.up.railway.app";
+const API_URL = "https://newfb-3igr.onrender.com";
 
 async function processDownload(url) {
     preview.innerHTML = `
